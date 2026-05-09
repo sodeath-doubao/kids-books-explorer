@@ -202,7 +202,7 @@
             display: block;
             width: 120px;
             height: 120px;
-            object-fit: contain;
+            object-fit: cover;
             margin: 0 auto 10px auto;
         }
 
@@ -382,6 +382,41 @@
         .character-card h4 {
             font-size: 1.3rem;
             margin-bottom: 8px;
+        }
+
+        .warriors-character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 16px;
+        }
+
+        .warrior-character-card {
+            background: linear-gradient(135deg, #2F855A, #68D391);
+            border-radius: 10px;
+            color: white;
+            min-height: 270px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .warrior-character-card h4 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        .warrior-character-card img {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            display: block;
+            height: 120px;
+            margin: 0 auto 12px auto;
+            object-fit: cover;
+            width: 120px;
+        }
+
+        .warrior-character-card p {
+            font-size: 0.95rem;
+            line-height: 1.45;
         }
 
         .image-row {
@@ -1952,20 +1987,137 @@
 </div>
 <div class="character-section">
 <h3 style="color: #228B22; text-align: center; margin-bottom: 20px;">Meet the Warrior Heroes!</h3>
-<div class="character-card">
+<div class="warriors-character-grid">
+<div class="warrior-character-card">
 <h4>Firestar</h4>
-<img alt="Firestar" src="firestar.PNG" style="width:120px; height:auto; border-radius:10px;"/>
+<img alt="Firestar" src="firestar.jpg"/>
 <p>Once a house cat named Rusty, he became the greatest leader ThunderClan ever knew!</p>
 </div>
-<div class="character-card">
+<div class="warrior-character-card">
 <h4>Graystripe</h4>
-<img alt="Graystripe" src="graystripe.PNG" style="width:120px; height:auto; border-radius:10px;"/>
+<img alt="Graystripe" src="graystripe.JPG"/>
 <p>Firestar's best friend, a loyal gray tom who loves adventure and his friends!</p>
 </div>
-<div class="character-card">
+<div class="warrior-character-card">
 <h4>Sandstorm</h4>
-<img alt="Sandstorm" src="sandstorm.PNG" style="width:120px; height:auto; border-radius:10px;"/>
+<img alt="Sandstorm" src="sandstorm.PNG"/>
 <p>A fierce and independent she-cat who became Firestar's mate and a brave warrior!</p>
+</div>
+<div class="warrior-character-card">
+<h4>Bluestar</h4>
+<img alt="Bluestar" src="bluestar.JPG"/>
+<p>The wise ThunderClan leader who first saw Rusty's brave heart.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Yellowfang</h4>
+<img alt="Yellowfang" src="yellowfang.JPG"/>
+<p>A sharp-tongued medicine cat with a huge, loyal heart.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Ravenpaw</h4>
+<img alt="Ravenpaw" src="ravenpaw.JPG"/>
+<p>A nervous apprentice who showed real courage when the Clan needed truth.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Cinderpelt</h4>
+<img alt="Cinderpelt" src="cinderpelt.JPG"/>
+<p>A joyful apprentice who became a caring and clever medicine cat.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Spottedleaf</h4>
+<img alt="Spottedleaf" src="spottedleaf.JPG"/>
+<p>A gentle medicine cat whose dreams and warnings echoed from StarClan.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Tigerstar</h4>
+<img alt="Tigerstar" src="tigerstar.JPG"/>
+<p>A powerful warrior whose ambition made him one of the darkest threats.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Bramblestar</h4>
+<img alt="Bramblestar" src="brambleclaw.JPG"/>
+<p>A brave ThunderClan tom who fought to choose his own path.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Squirrelflight</h4>
+<img alt="Squirrelflight" src="squirrelstar.JPG"/>
+<p>Bold, stubborn, and fiercely loyal to the cats she loves.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Leafpool</h4>
+<img alt="Leafpool" src="leafpool.JPG"/>
+<p>A thoughtful medicine cat whose choices changed ThunderClan forever.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Jayfeather</h4>
+<img alt="Jayfeather" src="jayfeather.JPG"/>
+<p>A grumpy, brilliant medicine cat with powers far beyond ordinary sight.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Lionblaze</h4>
+<img alt="Lionblaze" src="lionblaze.JPG"/>
+<p>A fearless fighter with strength that helped shape the Clans' future.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Hollyleaf</h4>
+<img alt="Hollyleaf" src="hollyleaf.JPG"/>
+<p>A serious ThunderClan warrior who cared deeply about the warrior code.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Dovewing</h4>
+<img alt="Dovewing" src="dovewing.JPG"/>
+<p>A kind cat with extraordinary senses and a very important destiny.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Ivypool</h4>
+<img alt="Ivypool" src="ivypool.JPG"/>
+<p>A daring spy who risked everything to protect the Clans.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Alderheart</h4>
+<img alt="Alderheart" src="alderheart.JPG"/>
+<p>A gentle medicine cat who helped guide a new generation.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Twigbranch</h4>
+<img alt="Twigbranch" src="twigbranch.JPG"/>
+<p>A young cat who searched for where she truly belonged.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Violetshine</h4>
+<img alt="Violetshine" src="violetshine.JPG"/>
+<p>A brave SkyClan cat who faced hard choices with courage.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Shadowsight</h4>
+<img alt="Shadowsight" src="shadowsight.JPG"/>
+<p>A ShadowClan medicine cat tangled in mysterious visions.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Rootspring</h4>
+<img alt="Rootspring" src="rootspring.JPG"/>
+<p>A SkyClan warrior with a strange connection to spirits.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Bristlefrost</h4>
+<img alt="Bristlefrost" src="bristlefrost.JPG"/>
+<p>A loyal ThunderClan warrior remembered for her courage and love.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Frostpaw</h4>
+<img alt="Frostpaw" src="frostpaw.JPG"/>
+<p>A RiverClan apprentice pulled into a mystery about her Clan's future.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Nightheart</h4>
+<img alt="Nightheart" src="nightheart.JPG"/>
+<p>A ThunderClan tom trying to step out of Firestar's long shadow.</p>
+</div>
+<div class="warrior-character-card">
+<h4>Sunbeam</h4>
+<img alt="Sunbeam" src="sunbeam.JPG"/>
+<p>A thoughtful ShadowClan warrior learning what loyalty means to her.</p>
+</div>
 </div>
 </div>
 </div>
