@@ -14,9 +14,9 @@
 
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(45deg, #FFB6C1, #87CEEB, #98FB98, #F0E68C);
+            background: linear-gradient(135deg, #0F766E, #2563EB, #F97316, #FACC15);
             background-size: 400% 400%;
-            animation: gradientShift 8s ease infinite;
+            animation: gradientShift 12s ease infinite;
             min-height: 100vh;
             padding: 20px;
         }
@@ -128,6 +128,22 @@
 
         .series-card.arceus {
             background: linear-gradient(135deg, #6A5ACD, #FFD700);
+        }
+
+        .series-card.harrypotter {
+            background: linear-gradient(135deg, #740001, #D3A625);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .series-card.harrypotter::after {
+            content: "HP";
+            position: absolute;
+            right: 18px;
+            bottom: 8px;
+            font-size: 4rem;
+            opacity: 0.18;
+            font-weight: bold;
         }
 
         .alpha-note {
@@ -419,6 +435,83 @@
             line-height: 1.45;
         }
 
+        .hp-hero {
+            background: linear-gradient(135deg, #1f2937, #740001 50%, #d3a625);
+            border-radius: 18px;
+            color: white;
+            margin: 20px 0 30px 0;
+            overflow: hidden;
+            padding: 28px;
+            position: relative;
+            text-align: center;
+        }
+
+        .hp-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 18% 25%, rgba(255,255,255,0.26) 0 4px, transparent 5px),
+                radial-gradient(circle at 76% 35%, rgba(255,255,255,0.20) 0 3px, transparent 4px),
+                radial-gradient(circle at 62% 72%, rgba(255,255,255,0.22) 0 4px, transparent 5px);
+            pointer-events: none;
+        }
+
+        .hp-hero h2,
+        .hp-hero p {
+            position: relative;
+        }
+
+        .hp-hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .hp-house-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 16px;
+            margin: 20px 0 30px 0;
+        }
+
+        .hp-house-card {
+            border-radius: 10px;
+            color: white;
+            min-height: 220px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        .hp-house-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .hp-house-card svg {
+            display: block;
+            height: 96px;
+            margin: 0 auto 14px auto;
+            width: 96px;
+        }
+
+        .hp-house-card .icon-fill {
+            fill: rgba(255, 255, 255, 0.92);
+        }
+
+        .hp-house-card .icon-line {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.94);
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 7;
+        }
+
+        .hp-house-card.gryffindor { background: linear-gradient(135deg, #740001, #D3A625); }
+        .hp-house-card.slytherin { background: linear-gradient(135deg, #1A472A, #AAAAAA); }
+        .hp-house-card.ravenclaw { background: linear-gradient(135deg, #0E1A40, #946B2D); }
+        .hp-house-card.hufflepuff { background: linear-gradient(135deg, #ECB939, #222222); }
+
         .image-row {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -477,6 +570,52 @@
             font-size: 4rem;
             opacity: 0.14;
             font-weight: bold;
+        }
+
+        .series-card.upcoming {
+            background: linear-gradient(135deg, #050505, #1F1F1F 28%, #3B0202 55%, #FF6A00 100%);
+            border: 3px solid rgba(255, 170, 62, 0.9);
+            box-shadow: 0 0 0 6px rgba(255, 108, 0, 0.25), 0 0 26px rgba(255, 120, 0, 0.52), 0 18px 34px rgba(0, 0, 0, 0.35);
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+            transform: scale(1.01);
+            animation: upcoming-flash 0.9s ease-in-out infinite alternate;
+        }
+
+        .series-card.upcoming:hover {
+            transform: scale(1.01);
+            box-shadow: 0 0 0 6px rgba(255, 108, 0, 0.25), 0 0 30px rgba(255, 120, 0, 0.6), 0 18px 34px rgba(0, 0, 0, 0.35);
+            filter: brightness(1.07) saturate(1.1);
+        }
+
+        .series-card.upcoming::after {
+            content: '★';
+            position: absolute;
+            right: 18px;
+            bottom: 6px;
+            font-size: 3.8rem;
+            opacity: 0.28;
+            font-weight: bold;
+            color: #FFD166;
+        }
+
+        @keyframes upcoming-flash {
+            0% {
+                box-shadow: 0 0 0 6px rgba(255, 108, 0, 0.18), 0 0 14px rgba(255, 120, 0, 0.26), 0 18px 34px rgba(0, 0, 0, 0.35);
+                filter: brightness(0.9) saturate(0.85);
+                transform: scale(1.01);
+            }
+            50% {
+                box-shadow: 0 0 0 8px rgba(255, 162, 20, 0.42), 0 0 30px rgba(255, 166, 0, 0.9), 0 0 52px rgba(255, 93, 0, 0.68), 0 18px 34px rgba(0, 0, 0, 0.35);
+                filter: brightness(1.35) saturate(1.6);
+                transform: scale(1.02);
+            }
+            100% {
+                box-shadow: 0 0 0 6px rgba(255, 108, 0, 0.22), 0 0 16px rgba(255, 120, 0, 0.35), 0 18px 34px rgba(0, 0, 0, 0.35);
+                filter: brightness(1.08) saturate(1.15);
+                transform: scale(1.01);
+            }
         }
 
         .hashira-highlight {
@@ -931,8 +1070,8 @@
 <body>
 <div class="container">
 <div class="content-area" id="home" style="display: block;">
-<h1 class="main-header">Enter Your Universe 🚀!</h1>
-<div class="subtitle">Choose your epic adventure! Dragons, Warrior Cats, Pokémon, or science with Dr. STONE?</div>
+<h1 class="main-header">Enjoy Ruining's Universe 🚀!</h1>
+<div class="subtitle">Choose your epic adventure! Dragons, Warrior Cats, Pokémon, Harry Potter, or science with Dr. STONE?</div>
 
 <div class="series-selection">
 <div class="series-card dragons" onclick="showSeries('dragons')">
@@ -942,6 +1081,10 @@
 <div class="series-card warriors" onclick="showSeries('warriors')">
 <h2>Warriors</h2>
 <p>Brave cats defending their clans in the wild!</p>
+</div>
+<div class="series-card harrypotter" onclick="showSeries('harrypotter')">
+<h2>Harry Potter</h2>
+<p>Magic school, houses, spells, friendship, and mystery!</p>
 </div>
 <div class="series-card pokemon" onclick="showSeries('pokemon')">
 <h2>Pokémon</h2>
@@ -963,6 +1106,10 @@
 <h2>鬼滅の刃</h2>
 <p>柱のみんなを、和風テイストで紹介！</p>
 </div>
+<div class="series-card upcoming" aria-disabled="true">
+<h2>Godzilla -0.0</h2>
+<p>ROAR into the future! New monster action arrives on Nov 3!</p>
+</div>
 </div>
 <div class="home-progress-wrap">
 <div class="home-progress-header">
@@ -970,7 +1117,7 @@
 <h3>✨ Pokémon Arceus Progress</h3>
 <p>Cute + cool hunt log for the latest Alpha Pokémon catch!</p>
 </div>
-<div class="progress-pill">4/21 Hisui Progress Log</div>
+<div class="progress-pill">7/21 Hisui Progress Log</div>
 </div>
 <div class="home-progress-content">
 <div class="progress-panel">
@@ -985,6 +1132,9 @@
                             🎉 On <strong>4/16</strong>, you caught a super cool <strong>Lv.85 Garchomp</strong> —
                             <strong>No.189</strong>! Now <strong>Alpha Lucario</strong> joins the team too: a
                             <strong>Lv.70 Fighting / Steel</strong> hero with scary-cool <strong>red eyes</strong>!
+                            <br/><br/>
+                            ✨ Three more legendary catches were added: <strong>Dialga</strong>, <strong>Palkia</strong>, and
+                            <strong>Giratina</strong> — bringing the total to <strong>7/21</strong>!
                         </div>
 <div class="milestone-row">
 <div class="milestone-chip">📍 4/16 Caught</div>
@@ -992,6 +1142,7 @@
 <div class="milestone-chip">🐉 Garchomp</div>
 <div class="milestone-chip">🥋 Lucario</div>
 <div class="milestone-chip">🧿 Red Eyes</div>
+<div class="milestone-chip">✨ 3 More</div>
 </div>
 </div>
 <div class="garchomp-panel">
@@ -1014,6 +1165,39 @@
                             No.224<br/>
                             Lv.70 Alpha Style<br/>
                             Fighting / Steel Aura
+                        </div>
+</div>
+<div class="garchomp-panel">
+<div class="garchomp-frame">
+<img alt="Dialga in Pokémon Legends: Arceus" class="alpha-screenshot" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/483.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/483.png"/>
+</div>
+<div class="garchomp-name">Dialga</div>
+<div class="garchomp-meta">
+                            No.483<br/>
+                            Dragon / Steel<br/>
+                            Time Pokémon
+                        </div>
+</div>
+<div class="garchomp-panel">
+<div class="garchomp-frame">
+<img alt="Palkia in Pokémon Legends: Arceus" class="alpha-screenshot" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/484.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/484.png"/>
+</div>
+<div class="garchomp-name">Palkia</div>
+<div class="garchomp-meta">
+                            No.484<br/>
+                            Water / Dragon<br/>
+                            Space Pokémon
+                        </div>
+</div>
+<div class="garchomp-panel">
+<div class="garchomp-frame">
+<img alt="Giratina in Pokémon Legends: Arceus" class="alpha-screenshot" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/487.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/487.png"/>
+</div>
+<div class="garchomp-name">Giratina</div>
+<div class="garchomp-meta">
+                            No.487<br/>
+                            Ghost / Dragon<br/>
+                            Renegade Pokémon
                         </div>
 </div>
 </div>
@@ -1202,28 +1386,28 @@
 <div class="book-card">
 <h3>Parasect</h3>
 <img alt="Parasect" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/47.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/47.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 30<br/><strong>Area:</strong> Obsidian Fieldlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 30<br/><strong>Area:</strong> Obsidian Fieldlands - Nature's Pantry</div>
 <div class="alpha-meta"><strong>Type:</strong> Bug / Grass</div>
 <p>An Alpha Parasect has glowing red eyes in the game, is bigger than normal, and appears at about level 30.</p>
 </div>
 <div class="book-card caught-alpha">
 <h3>Rapidash</h3>
 <img alt="Rapidash" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/78.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/78.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 40<br/><strong>Area:</strong> Obsidian Fieldlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 40<br/><strong>Area:</strong> Obsidian Fieldlands - Horseshoe Plains</div>
 <div class="alpha-meta"><strong>Type:</strong> Fire</div>
 <p>An Alpha Rapidash has glowing red eyes in the game, is bigger than normal, and appears at about level 40.</p>
 </div>
 <div class="book-card">
 <h3>Snorlax</h3>
 <img alt="Snorlax" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 45<br/><strong>Area:</strong> Obsidian Fieldlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 45<br/><strong>Area:</strong> Obsidian Fieldlands - Lake Verity</div>
 <div class="alpha-meta"><strong>Type:</strong> Normal</div>
 <p>An Alpha Snorlax has glowing red eyes in the game, is bigger than normal, and appears at about level 45.</p>
 </div>
 <div class="book-card caught-alpha">
 <h3>Bibarel</h3>
 <img alt="Bibarel" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/400.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/400.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 16<br/><strong>Area:</strong> Obsidian Fieldlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 16<br/><strong>Area:</strong> Obsidian Fieldlands - Tidewater Dam</div>
 <div class="alpha-meta"><strong>Type:</strong> Normal / Water</div>
 <p>An Alpha Bibarel has glowing red eyes in the game, is bigger than normal, and appears at about level 16.</p>
 </div>
@@ -1237,9 +1421,9 @@
 <div class="book-card">
 <h3>Luxio</h3>
 <img alt="Luxio" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/404.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/404.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 30<br/><strong>Area:</strong> Obsidian Fieldlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 40<br/><strong>Area:</strong> Obsidian Fieldlands - Floaro Gardens</div>
 <div class="alpha-meta"><strong>Type:</strong> Electric</div>
-<p>An Alpha Luxio has glowing red eyes in the game, is bigger than normal, and appears at about level 30.</p>
+<p>An Alpha Luxio has glowing red eyes in the game, is bigger than normal, and appears at about level 40.</p>
 </div>
 <div class="book-card">
 <h3>Geodude</h3>
@@ -1251,9 +1435,9 @@
 <div class="book-card">
 <h3>Floatzel</h3>
 <img alt="Floatzel" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/419.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/419.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 40<br/><strong>Area:</strong> Obsidian Fieldlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 31<br/><strong>Area:</strong> Obsidian Fieldlands - Worn Bridge</div>
 <div class="alpha-meta"><strong>Type:</strong> Water</div>
-<p>An Alpha Floatzel has glowing red eyes in the game, is bigger than normal, and appears at about level 40.</p>
+<p>An Alpha Floatzel has glowing red eyes in the game, is bigger than normal, and appears at about level 31.</p>
 </div>
 <div class="book-card">
 <h3>Bidoof</h3>
@@ -1263,81 +1447,130 @@
 <p>An Alpha Bidoof has glowing red eyes in the game, is bigger than normal, and appears at about level 18.</p>
 </div>
 <div class="book-card">
+<h3>Graveler</h3>
+<img alt="Graveler" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/75.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/75.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 30<br/><strong>Area:</strong> Obsidian Fieldlands - Grueling Grove</div>
+<div class="alpha-meta"><strong>Type:</strong> Rock / Ground</div>
+<p>An Alpha Graveler has glowing red eyes in the game, is bigger than normal, and appears at about level 30.</p>
+</div>
+<div class="book-card">
+<h3>Golbat</h3>
+<img alt="Golbat" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/42.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/42.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 35<br/><strong>Area:</strong> Obsidian Fieldlands - Oreburrow Tunnel</div>
+<div class="alpha-meta"><strong>Type:</strong> Poison / Flying</div>
+<p>An Alpha Golbat has glowing red eyes in the game, is bigger than normal, and appears at about level 35.</p>
+</div>
+<div class="book-card">
 <h3>Blissey</h3>
 <img alt="Blissey" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/242.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/242.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 62<br/><strong>Area:</strong> Obsidian Fieldlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 62<br/><strong>Area:</strong> Obsidian Fieldlands - Obsidian Falls</div>
 <div class="alpha-meta"><strong>Type:</strong> Normal</div>
 <p>An Alpha Blissey has glowing red eyes in the game, is bigger than normal, and appears at about level 62.</p>
 </div>
 <div class="book-card">
 <h3>Alakazam</h3>
 <img alt="Alakazam" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/65.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/65.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 60<br/><strong>Area:</strong> Obsidian Fieldlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 60<br/><strong>Area:</strong> Obsidian Fieldlands - Sandgem Flats</div>
 <div class="alpha-meta"><strong>Type:</strong> Psychic</div>
 <p>An Alpha Alakazam has glowing red eyes in the game, is bigger than normal, and appears at about level 60.</p>
 </div>
 <div class="book-card">
 <h3>Staravia</h3>
 <img alt="Staravia" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/397.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/397.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 32<br/><strong>Area:</strong> Obsidian Fieldlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 32<br/><strong>Area:</strong> Obsidian Fieldlands - Windswept Run</div>
 <div class="alpha-meta"><strong>Type:</strong> Normal / Flying</div>
 <p>An Alpha Staravia has glowing red eyes in the game, is bigger than normal, and appears at about level 32.</p>
 </div>
 <div class="book-card caught-alpha">
 <h3>Infernape</h3>
 <img alt="Infernape" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/392.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/392.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 65<br/><strong>Area:</strong> Obsidian Fieldlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 65<br/><strong>Area:</strong> Obsidian Fieldlands - Ramanas Island</div>
 <div class="alpha-meta"><strong>Type:</strong> Fire / Fighting</div>
 <p>An Alpha Infernape has glowing red eyes in the game, is bigger than normal, and appears at about level 65.</p>
 </div>
 <div class="book-card">
 <h3>Scyther</h3>
 <img alt="Scyther" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/123.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/123.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 42<br/><strong>Area:</strong> Obsidian Fieldlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 42<br/><strong>Area:</strong> Obsidian Fieldlands - Grandtree Arena</div>
 <div class="alpha-meta"><strong>Type:</strong> Bug / Flying</div>
 <p>An Alpha Scyther has glowing red eyes in the game, is bigger than normal, and appears at about level 42.</p>
 </div>
 <div class="book-card">
 <h3>Gyarados</h3>
 <img alt="Gyarados" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/130.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 60<br/><strong>Area:</strong> Obsidian Fieldlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 60<br/><strong>Area:</strong> Obsidian Fieldlands - Lake Verity</div>
 <div class="alpha-meta"><strong>Type:</strong> Water / Flying</div>
 <p>An Alpha Gyarados has glowing red eyes in the game, is bigger than normal, and appears at about level 60.</p>
+</div>
+<div class="book-card">
+<h3>Magikarp</h3>
+<img alt="Magikarp" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/129.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/129.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 55<br/><strong>Area:</strong> Obsidian Fieldlands - Oreburrow Tunnel</div>
+<div class="alpha-meta"><strong>Type:</strong> Water</div>
+<p>An Alpha Magikarp has glowing red eyes in the game, is bigger than normal, and appears at about level 55.</p>
+</div>
+<div class="book-card">
+<h3>Heracross</h3>
+<img alt="Heracross" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/214.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/214.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 45<br/><strong>Area:</strong> Obsidian Fieldlands - Grueling Grove</div>
+<div class="alpha-meta"><strong>Type:</strong> Bug / Fighting</div>
+<p>An Alpha Heracross has glowing red eyes in the game, is bigger than normal, and appears at about level 45.</p>
+</div>
+<div class="book-card caught-alpha">
+<h3>Stantler</h3>
+<img alt="Stantler" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/234.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/234.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 42<br/><strong>Area:</strong> Obsidian Fieldlands - Deertrack Heights East</div>
+<div class="alpha-meta"><strong>Type:</strong> Normal</div>
+<p>An Alpha Stantler has glowing red eyes in the game, is bigger than normal, and appears at about level 42.</p>
+</div>
+<div class="book-card">
+<h3>Lopunny</h3>
+<img alt="Lopunny" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/428.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/428.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 40<br/><strong>Area:</strong> Obsidian Fieldlands - The Heartwood</div>
+<div class="alpha-meta"><strong>Type:</strong> Normal</div>
+<p>An Alpha Lopunny has glowing red eyes in the game, is bigger than normal, and appears at about level 40.</p>
 </div>
 <div class="book-card caught-alpha">
 <h3>Kricketune</h3>
 <img alt="Kricketune" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/402.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/402.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 30<br/><strong>Area:</strong> Obsidian Fieldlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 30<br/><strong>Area:</strong> Obsidian Fieldlands - Tidewater Dam</div>
 <div class="alpha-meta"><strong>Type:</strong> Bug</div>
 <p>An Alpha Kricketune has glowing red eyes in the game, is bigger than normal, and appears at about level 30.</p>
 </div>
 <div class="book-card">
 <h3>Tangrowth</h3>
 <img alt="Tangrowth" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/465.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/465.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 45<br/><strong>Area:</strong> Crimson Mirelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 45<br/><strong>Area:</strong> Crimson Mirelands - Scarlet Bog</div>
 <div class="alpha-meta"><strong>Type:</strong> Grass</div>
 <p>An Alpha Tangrowth has glowing red eyes in the game, is bigger than normal, and appears at about level 45.</p>
 </div>
 <div class="book-card caught-alpha">
 <h3>Hippowdon</h3>
 <img alt="Hippowdon" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/450.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/450.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 45<br/><strong>Area:</strong> Crimson Mirelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 46<br/><strong>Area:</strong> Crimson Mirelands - Sludge Mound</div>
 <div class="alpha-meta"><strong>Type:</strong> Ground</div>
-<p>An Alpha Hippowdon has glowing red eyes in the game, is bigger than normal, and appears at about level 45.</p>
+<p>An Alpha Hippowdon has glowing red eyes in the game, is bigger than normal, and appears at about level 46.</p>
 </div>
 <div class="book-card">
 <h3>Rhyhorn</h3>
 <img alt="Rhyhorn" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/111.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/111.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 45<br/><strong>Area:</strong> Crimson Mirelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 45<br/><strong>Area:</strong> Crimson Mirelands - Diamond Heath</div>
 <div class="alpha-meta"><strong>Type:</strong> Ground / Rock</div>
 <p>An Alpha Rhyhorn has glowing red eyes in the game, is bigger than normal, and appears at about level 45.</p>
 </div>
 <div class="book-card">
+<h3>Skuntank</h3>
+<img alt="Skuntank" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/435.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/435.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 45<br/><strong>Area:</strong> Crimson Mirelands - Scarlet Bog</div>
+<div class="alpha-meta"><strong>Type:</strong> Poison / Dark</div>
+<p>An Alpha Skuntank has glowing red eyes in the game, is bigger than normal, and appears at about level 45.</p>
+</div>
+<div class="book-card">
 <h3>Ursaring</h3>
 <img alt="Ursaring" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/217.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/217.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 55<br/><strong>Area:</strong> Crimson Mirelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 41<br/><strong>Area:</strong> Crimson Mirelands - Ursa's Ring</div>
 <div class="alpha-meta"><strong>Type:</strong> Normal</div>
-<p>An Alpha Ursaring has glowing red eyes in the game, is bigger than normal, and appears at about level 55.</p>
+<p>An Alpha Ursaring has glowing red eyes in the game, is bigger than normal, and appears at about level 41.</p>
 </div>
 <div class="book-card">
 <h3>Psyduck</h3>
@@ -1349,21 +1582,28 @@
 <div class="book-card caught-alpha">
 <h3>Sliggoo</h3>
 <img alt="Sliggoo" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/705.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/705.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 50<br/><strong>Area:</strong> Crimson Mirelands</div>
-<div class="alpha-meta"><strong>Type:</strong> Dragon</div>
+<div class="alpha-meta"><strong>Level:</strong> 50<br/><strong>Area:</strong> Crimson Mirelands - Holm of Trials</div>
+<div class="alpha-meta"><strong>Type:</strong> Dragon / Steel</div>
 <p>An Alpha Sliggoo has glowing red eyes in the game, is bigger than normal, and appears at about level 50.</p>
+</div>
+<div class="book-card">
+<h3>Toxicroak</h3>
+<img alt="Toxicroak" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/454.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/454.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 47<br/><strong>Area:</strong> Crimson Mirelands - Holm of Trials</div>
+<div class="alpha-meta"><strong>Type:</strong> Poison / Fighting</div>
+<p>An Alpha Toxicroak has glowing red eyes in the game, is bigger than normal, and appears at about level 47.</p>
 </div>
 <div class="book-card">
 <h3>Lickilicky</h3>
 <img alt="Lickilicky" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/463.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/463.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 52<br/><strong>Area:</strong> Crimson Mirelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 52<br/><strong>Area:</strong> Crimson Mirelands - Shrouded Ruins</div>
 <div class="alpha-meta"><strong>Type:</strong> Normal</div>
 <p>An Alpha Lickilicky has glowing red eyes in the game, is bigger than normal, and appears at about level 52.</p>
 </div>
 <div class="book-card caught-alpha">
 <h3>Pachirisu</h3>
 <img alt="Pachirisu" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/417.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/417.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 40<br/><strong>Area:</strong> Crimson Mirelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 40<br/><strong>Area:</strong> Crimson Mirelands - Gapejaw Bog</div>
 <div class="alpha-meta"><strong>Type:</strong> Electric</div>
 <p>An Alpha Pachirisu has glowing red eyes in the game, is bigger than normal, and appears at about level 40.</p>
 </div>
@@ -1377,65 +1617,149 @@
 <div class="book-card">
 <h3>Raichu</h3>
 <img alt="Raichu" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/26.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 52<br/><strong>Area:</strong> Crimson Mirelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 52<br/><strong>Area:</strong> Crimson Mirelands - Golden Lowlands</div>
 <div class="alpha-meta"><strong>Type:</strong> Electric</div>
 <p>An Alpha Raichu has glowing red eyes in the game, is bigger than normal, and appears at about level 52.</p>
 </div>
 <div class="book-card">
 <h3>Carnivine</h3>
 <img alt="Carnivine" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/455.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/455.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 43<br/><strong>Area:</strong> Crimson Mirelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 40<br/><strong>Area:</strong> Crimson Mirelands - Cottonsedge Prairie</div>
 <div class="alpha-meta"><strong>Type:</strong> Grass</div>
-<p>An Alpha Carnivine has glowing red eyes in the game, is bigger than normal, and appears at about level 43.</p>
+<p>An Alpha Carnivine has glowing red eyes in the game, is bigger than normal, and appears at about level 40.</p>
 </div>
 <div class="book-card">
 <h3>Roserade</h3>
 <img alt="Roserade" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/407.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/407.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 50<br/><strong>Area:</strong> Crimson Mirelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 50<br/><strong>Area:</strong> Crimson Mirelands - Cloudpool Ridge</div>
 <div class="alpha-meta"><strong>Type:</strong> Grass / Poison</div>
 <p>An Alpha Roserade has glowing red eyes in the game, is bigger than normal, and appears at about level 50.</p>
+</div>
+<div class="book-card">
+<h3>Onix</h3>
+<img alt="Onix" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/95.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/95.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 50<br/><strong>Area:</strong> Crimson Mirelands - Diamond Settlement</div>
+<div class="alpha-meta"><strong>Type:</strong> Rock / Ground</div>
+<p>An Alpha Onix has glowing red eyes in the game, is bigger than normal, and appears at about level 50.</p>
+</div>
+<div class="book-card">
+<h3>Honchkrow</h3>
+<img alt="Honchkrow" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/430.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/430.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 55<br/><strong>Area:</strong> Crimson Mirelands - Cloudpool Ridge</div>
+<div class="alpha-meta"><strong>Type:</strong> Dark / Flying</div>
+<p>An Alpha Honchkrow has glowing red eyes in the game, is bigger than normal, and appears at about level 55 at night.</p>
+</div>
+<div class="book-card">
+<h3>Yanmega</h3>
+<img alt="Yanmega" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/469.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/469.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 58<br/><strong>Area:</strong> Crimson Mirelands - Droning Meadow</div>
+<div class="alpha-meta"><strong>Type:</strong> Bug / Flying</div>
+<p>An Alpha Yanmega has glowing red eyes in the game, is bigger than normal, and appears at about level 58.</p>
+</div>
+<div class="book-card">
+<h3>Vespiquen</h3>
+<img alt="Vespiquen" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/416.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/416.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 61<br/><strong>Area:</strong> Crimson Mirelands - Cottonsedge Prairie</div>
+<div class="alpha-meta"><strong>Type:</strong> Bug / Flying</div>
+<p>An Alpha Vespiquen has glowing red eyes in the game, is bigger than normal, and appears at about level 61.</p>
+</div>
+<div class="book-card">
+<h3>Whiscash</h3>
+<img alt="Whiscash" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/340.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/340.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 64<br/><strong>Area:</strong> Crimson Mirelands - Lake Valor</div>
+<div class="alpha-meta"><strong>Type:</strong> Water / Ground</div>
+<p>An Alpha Whiscash has glowing red eyes in the game, is bigger than normal, and appears at about level 64.</p>
+</div>
+<div class="book-card">
+<h3>Torterra</h3>
+<img alt="Torterra" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/389.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/389.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 65<br/><strong>Area:</strong> Crimson Mirelands - Holm of Trials</div>
+<div class="alpha-meta"><strong>Type:</strong> Grass / Ground</div>
+<p>An Alpha Torterra has glowing red eyes in the game, is bigger than normal, and appears at about level 65.</p>
+</div>
+<div class="book-card">
+<h3>Unown</h3>
+<img alt="Unown" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/201.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/201.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 40<br/><strong>Area:</strong> Crimson Mirelands - Solaceon Ruins</div>
+<div class="alpha-meta"><strong>Type:</strong> Psychic</div>
+<p>An Alpha Unown has a chance to appear in Solaceon Ruins after all 28 Unown forms are collected.</p>
+</div>
+<div class="book-card">
+<h3>Spiritomb</h3>
+<img alt="Spiritomb" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/442.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/442.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 80<br/><strong>Area:</strong> Crimson Mirelands - Shrouded Ruins</div>
+<div class="alpha-meta"><strong>Type:</strong> Ghost / Dark</div>
+<p>An Alpha Spiritomb has a chance to appear at night after all Wisps from Request 22 are collected.</p>
 </div>
 <div class="book-card caught-alpha">
 <h3>Octillery</h3>
 <img alt="Octillery" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/224.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/224.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 46<br/><strong>Area:</strong> Cobalt Coastlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 46<br/><strong>Area:</strong> Cobalt Coastlands - Castaway Shore</div>
 <div class="alpha-meta"><strong>Type:</strong> Water</div>
 <p>An Alpha Octillery has glowing red eyes in the game, is bigger than normal, and appears at about level 46.</p>
 </div>
 <div class="book-card">
+<h3>Drapion</h3>
+<img alt="Drapion" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/452.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/452.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 45<br/><strong>Area:</strong> Cobalt Coastlands - Ginkgo Landing</div>
+<div class="alpha-meta"><strong>Type:</strong> Poison / Dark</div>
+<p>An Alpha Drapion has glowing red eyes in the game, is bigger than normal, and appears at about level 45.</p>
+</div>
+<div class="book-card">
+<h3>Tentacruel</h3>
+<img alt="Tentacruel" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/73.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/73.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 50<br/><strong>Area:</strong> Cobalt Coastlands - Lunker's Lair</div>
+<div class="alpha-meta"><strong>Type:</strong> Water / Poison</div>
+<p>An Alpha Tentacruel has glowing red eyes in the game, is bigger than normal, and appears at about level 50.</p>
+</div>
+<div class="book-card">
 <h3>Walrein</h3>
 <img alt="Walrein" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/365.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/365.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 50<br/><strong>Area:</strong> Cobalt Coastlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 50<br/><strong>Area:</strong> Cobalt Coastlands - Ginkgo Landing</div>
 <div class="alpha-meta"><strong>Type:</strong> Ice / Water</div>
 <p>An Alpha Walrein has glowing red eyes in the game, is bigger than normal, and appears at about level 50.</p>
 </div>
 <div class="book-card">
 <h3>Chansey</h3>
 <img alt="Chansey" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/113.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 51<br/><strong>Area:</strong> Cobalt Coastlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 51<br/><strong>Area:</strong> Cobalt Coastlands - Tombolo Walk</div>
 <div class="alpha-meta"><strong>Type:</strong> Normal</div>
 <p>An Alpha Chansey has glowing red eyes in the game, is bigger than normal, and appears at about level 51.</p>
 </div>
 <div class="book-card">
 <h3>Ambipom</h3>
 <img alt="Ambipom" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/424.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/424.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 50<br/><strong>Area:</strong> Cobalt Coastlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 50<br/><strong>Area:</strong> Cobalt Coastlands - Hideaway Bay</div>
 <div class="alpha-meta"><strong>Type:</strong> Normal</div>
 <p>An Alpha Ambipom has glowing red eyes in the game, is bigger than normal, and appears at about level 50.</p>
 </div>
 <div class="book-card">
+<h3>Mantine</h3>
+<img alt="Mantine" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/226.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/226.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 50<br/><strong>Area:</strong> Cobalt Coastlands - Tranquility Cove</div>
+<div class="alpha-meta"><strong>Type:</strong> Water / Flying</div>
+<p>An Alpha Mantine has glowing red eyes in the game, is bigger than normal, and appears at about level 50.</p>
+</div>
+<div class="book-card">
 <h3>Golduck</h3>
 <img alt="Golduck" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/55.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/55.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 50<br/><strong>Area:</strong> Cobalt Coastlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 50<br/><strong>Area:</strong> Cobalt Coastlands - Bathers' Lagoon</div>
 <div class="alpha-meta"><strong>Type:</strong> Water</div>
 <p>An Alpha Golduck has glowing red eyes in the game, is bigger than normal, and appears at about level 50.</p>
 </div>
 <div class="book-card caught-alpha">
 <h3>Purugly</h3>
 <img alt="Purugly" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/432.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/432.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 45<br/><strong>Area:</strong> Cobalt Coastlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 45<br/><strong>Area:</strong> Cobalt Coastlands - Veilstone Cape</div>
 <div class="alpha-meta"><strong>Type:</strong> Normal</div>
 <p>An Alpha Purugly has glowing red eyes in the game, is bigger than normal, and appears at about level 45.</p>
+</div>
+<div class="book-card">
+<h3>Hisuian Qwilfish</h3>
+<img alt="Hisuian Qwilfish" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/211.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10234.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 55<br/><strong>Area:</strong> Cobalt Coastlands - Islespy Shore</div>
+<div class="alpha-meta"><strong>Type:</strong> Dark / Poison</div>
+<p>An Alpha Hisuian Qwilfish has glowing red eyes in the game, is bigger than normal, and appears at about level 55.</p>
 </div>
 <div class="book-card">
 <h3>Sealeo</h3>
@@ -1447,72 +1771,121 @@
 <div class="book-card caught-alpha">
 <h3>Empoleon</h3>
 <img alt="Empoleon" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/395.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/395.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 69<br/><strong>Area:</strong> Cobalt Coastlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 69<br/><strong>Area:</strong> Cobalt Coastlands - Islespy Shore</div>
 <div class="alpha-meta"><strong>Type:</strong> Water / Steel</div>
 <p>An Alpha Empoleon has glowing red eyes in the game, is bigger than normal, and appears at about level 69.</p>
 </div>
 <div class="book-card">
 <h3>Ninetales</h3>
 <img alt="Ninetales" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/38.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/38.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 61<br/><strong>Area:</strong> Cobalt Coastlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 61<br/><strong>Area:</strong> Cobalt Coastlands - Firespit Island</div>
 <div class="alpha-meta"><strong>Type:</strong> Fire</div>
 <p>An Alpha Ninetales has glowing red eyes in the game, is bigger than normal, and appears at about level 61.</p>
 </div>
 <div class="book-card">
+<h3>Lumineon</h3>
+<img alt="Lumineon" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/457.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/457.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 60<br/><strong>Area:</strong> Cobalt Coastlands - Seagrass Haven</div>
+<div class="alpha-meta"><strong>Type:</strong> Water</div>
+<p>An Alpha Lumineon has glowing red eyes in the game, is bigger than normal, and appears at about level 60.</p>
+</div>
+<div class="book-card">
+<h3>Gastrodon</h3>
+<img alt="Gastrodon" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/423.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/423.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 61<br/><strong>Area:</strong> Cobalt Coastlands - Seagrass Haven</div>
+<div class="alpha-meta"><strong>Type:</strong> Water / Ground</div>
+<p>An Alpha Gastrodon has glowing red eyes in the game, is bigger than normal, and appears at about level 61.</p>
+</div>
+<div class="book-card">
+<h3>Dusknoir</h3>
+<img alt="Dusknoir" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/477.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/477.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 65<br/><strong>Area:</strong> Cobalt Coastlands - Deadwood Haunt</div>
+<div class="alpha-meta"><strong>Type:</strong> Ghost</div>
+<p>An Alpha Dusknoir has glowing red eyes in the game, is bigger than normal, and appears at about level 65 at night.</p>
+</div>
+<div class="book-card">
 <h3>Mothim</h3>
 <img alt="Mothim" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/414.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/414.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 56<br/><strong>Area:</strong> Cobalt Coastlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 56<br/><strong>Area:</strong> Cobalt Coastlands - Spring Path</div>
 <div class="alpha-meta"><strong>Type:</strong> Bug / Flying</div>
 <p>An Alpha Mothim has glowing red eyes in the game, is bigger than normal, and appears at about level 56.</p>
 </div>
 <div class="book-card caught-alpha">
 <h3>Machoke</h3>
 <img alt="Machoke" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/67.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/67.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 40<br/><strong>Area:</strong> Cobalt Coastlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 40<br/><strong>Area:</strong> Cobalt Coastlands - Castaway Shore</div>
 <div class="alpha-meta"><strong>Type:</strong> Fighting</div>
 <p>An Alpha Machoke has glowing red eyes in the game, is bigger than normal, and appears at about level 40.</p>
+</div>
+<div class="book-card">
+<h3>Gligar</h3>
+<img alt="Gligar" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/207.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/207.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 52<br/><strong>Area:</strong> Coronet Highlands - Celestica Ruins</div>
+<div class="alpha-meta"><strong>Type:</strong> Ground / Flying</div>
+<p>An Alpha Gligar has glowing red eyes in the game, is bigger than normal, and appears at about level 52.</p>
 </div>
 <div class="book-card caught-alpha">
 <h3>Crobat</h3>
 <img alt="Crobat" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/169.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/169.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 60<br/><strong>Area:</strong> Coronet Highlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 60<br/><strong>Area:</strong> Coronet Highlands - Wayward Cave</div>
 <div class="alpha-meta"><strong>Type:</strong> Poison / Flying</div>
 <p>An Alpha Crobat has glowing red eyes in the game, is bigger than normal, and appears at about level 60.</p>
 </div>
 <div class="book-card caught-alpha">
 <h3>Gabite</h3>
 <img alt="Gabite" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/444.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/444.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 56<br/><strong>Area:</strong> Coronet Highlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 56<br/><strong>Area:</strong> Coronet Highlands - Clamberclaw Cliffs</div>
 <div class="alpha-meta"><strong>Type:</strong> Dragon / Ground</div>
 <p>An Alpha Gabite has glowing red eyes in the game, is bigger than normal, and appears at about level 56.</p>
+</div>
+<div class="book-card caught-alpha">
+<h3>Rhyperior</h3>
+<img alt="Rhyperior" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/464.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/464.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 74<br/><strong>Area:</strong> Coronet Highlands - Sacred Plaza</div>
+<div class="alpha-meta"><strong>Type:</strong> Ground / Rock</div>
+<p>An Alpha Rhyperior has glowing red eyes in the game, is bigger than normal, and appears at about level 74.</p>
 </div>
 <div class="book-card">
 <h3>Luxray</h3>
 <img alt="Luxray" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/405.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/405.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 55<br/><strong>Area:</strong> Coronet Highlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 55<br/><strong>Area:</strong> Coronet Highlands - Sacred Plaza</div>
 <div class="alpha-meta"><strong>Type:</strong> Electric</div>
 <p>An Alpha Luxray has glowing red eyes in the game, is bigger than normal, and appears at about level 55.</p>
 </div>
 <div class="book-card">
 <h3>Mismagius</h3>
 <img alt="Mismagius" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/429.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/429.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 61<br/><strong>Area:</strong> Coronet Highlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 61<br/><strong>Area:</strong> Coronet Highlands - Stonetooth Rows</div>
 <div class="alpha-meta"><strong>Type:</strong> Ghost</div>
 <p>An Alpha Mismagius has glowing red eyes in the game, is bigger than normal, and appears at about level 61.</p>
 </div>
 <div class="book-card">
+<h3>Goodra</h3>
+<img alt="Goodra" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/706.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/706.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 70<br/><strong>Area:</strong> Coronet Highlands - Ancient Quarry</div>
+<div class="alpha-meta"><strong>Type:</strong> Steel / Dragon</div>
+<p>An Alpha Hisuian Goodra has glowing red eyes in the game, is bigger than normal, and appears at about level 70.</p>
+</div>
+<div class="book-card">
 <h3>Electivire</h3>
 <img alt="Electivire" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/466.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/466.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 69<br/><strong>Area:</strong> Coronet Highlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 69<br/><strong>Area:</strong> Coronet Highlands - Cloudcap Pass</div>
 <div class="alpha-meta"><strong>Type:</strong> Electric</div>
 <p>An Alpha Electivire has glowing red eyes in the game, is bigger than normal, and appears at about level 69.</p>
 </div>
 <div class="book-card caught-alpha">
 <h3>Golem</h3>
 <img alt="Golem" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/76.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 60<br/><strong>Area:</strong> Coronet Highlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 60<br/><strong>Area:</strong> Coronet Highlands - Bolderoll Ravine</div>
 <div class="alpha-meta"><strong>Type:</strong> Rock / Ground</div>
 <p>An Alpha Golem has glowing red eyes in the game, is bigger than normal, and appears at about level 60.</p>
+</div>
+<div class="book-card">
+<h3>Probopass</h3>
+<img alt="Probopass" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/476.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/476.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 73<br/><strong>Area:</strong> Coronet Highlands - Primeval Grotto</div>
+<div class="alpha-meta"><strong>Type:</strong> Rock / Steel</div>
+<p>An Alpha Probopass has glowing red eyes in the game, is bigger than normal, and appears at about level 73.</p>
 </div>
 <div class="book-card">
 <h3>Budew</h3>
@@ -1524,91 +1897,112 @@
 <div class="book-card">
 <h3>Bronzong</h3>
 <img alt="Bronzong" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/437.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/437.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 55<br/><strong>Area:</strong> Coronet Highlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 55<br/><strong>Area:</strong> Coronet Highlands - Clamberclaw Cliffs</div>
 <div class="alpha-meta"><strong>Type:</strong> Steel / Psychic</div>
 <p>An Alpha Bronzong has glowing red eyes in the game, is bigger than normal, and appears at about level 55.</p>
 </div>
 <div class="book-card">
 <h3>Steelix</h3>
 <img alt="Steelix" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/208.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/208.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 60<br/><strong>Area:</strong> Coronet Highlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 60<br/><strong>Area:</strong> Coronet Highlands - Celestica Trail</div>
 <div class="alpha-meta"><strong>Type:</strong> Steel / Ground</div>
 <p>An Alpha Steelix has glowing red eyes in the game, is bigger than normal, and appears at about level 60.</p>
 </div>
 <div class="book-card">
 <h3>Clefable</h3>
 <img alt="Clefable" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/36.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/36.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 62<br/><strong>Area:</strong> Coronet Highlands</div>
+<div class="alpha-meta"><strong>Level:</strong> 62<br/><strong>Area:</strong> Coronet Highlands - Fabled Spring</div>
 <div class="alpha-meta"><strong>Type:</strong> Fairy</div>
 <p>An Alpha Clefable has glowing red eyes in the game, is bigger than normal, and appears at about level 62.</p>
 </div>
 <div class="book-card">
+<h3>Gliscor</h3>
+<img alt="Gliscor" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/472.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/472.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 77<br/><strong>Area:</strong> Coronet Highlands - Primeval Grotto</div>
+<div class="alpha-meta"><strong>Type:</strong> Ground / Flying</div>
+<p>An Alpha Gliscor has glowing red eyes in the game, is bigger than normal, and appears at about level 77.</p>
+</div>
+<div class="book-card">
 <h3>Glalie</h3>
 <img alt="Glalie" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/362.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/362.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 62<br/><strong>Area:</strong> Alabaster Icelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 62<br/><strong>Area:</strong> Alabaster Icelands - Bonechill Wastes</div>
 <div class="alpha-meta"><strong>Type:</strong> Ice</div>
 <p>An Alpha Glalie has glowing red eyes in the game, is bigger than normal, and appears at about level 62.</p>
 </div>
 <div class="book-card">
+<h3>Swinub</h3>
+<img alt="Swinub" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/220.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/220.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 62<br/><strong>Area:</strong> Alabaster Icelands - Bonechill Wastes</div>
+<div class="alpha-meta"><strong>Type:</strong> Ice / Ground</div>
+<p>An Alpha Swinub has glowing red eyes in the game, is bigger than normal, and appears at about level 62.</p>
+</div>
+<div class="book-card">
 <h3>Hisuian Sneasel</h3>
 <img alt="Hisuian Sneasel" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/215.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10235.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 61<br/><strong>Area:</strong> Alabaster Icelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 61<br/><strong>Area:</strong> Alabaster Icelands - Avalugg's Legacy</div>
 <div class="alpha-meta"><strong>Type:</strong> Fighting / Poison</div>
 <p>An Alpha Hisuian Sneasel has glowing red eyes in the game, is bigger than normal, and appears at about level 61.</p>
 </div>
 <div class="book-card">
 <h3>Chimecho</h3>
 <img alt="Chimecho" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/358.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/358.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 65<br/><strong>Area:</strong> Alabaster Icelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 65<br/><strong>Area:</strong> Alabaster Icelands - Lake Acuity</div>
 <div class="alpha-meta"><strong>Type:</strong> Psychic</div>
 <p>An Alpha Chimecho has glowing red eyes in the game, is bigger than normal, and appears at about level 65.</p>
 </div>
 <div class="book-card">
 <h3>Electabuzz</h3>
 <img alt="Electabuzz" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/125.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/125.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 65<br/><strong>Area:</strong> Alabaster Icelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 65<br/><strong>Area:</strong> Alabaster Icelands - Icebound Falls</div>
 <div class="alpha-meta"><strong>Type:</strong> Electric</div>
 <p>An Alpha Electabuzz has glowing red eyes in the game, is bigger than normal, and appears at about level 65.</p>
 </div>
 <div class="book-card">
 <h3>Abomasnow</h3>
 <img alt="Abomasnow" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/460.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/460.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 68<br/><strong>Area:</strong> Alabaster Icelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 68<br/><strong>Area:</strong> Alabaster Icelands - Avalugg's Legacy</div>
 <div class="alpha-meta"><strong>Type:</strong> Grass / Ice</div>
 <p>An Alpha Abomasnow has glowing red eyes in the game, is bigger than normal, and appears at about level 68.</p>
 </div>
 <div class="book-card">
 <h3>Froslass</h3>
 <img alt="Froslass" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/478.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/478.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 72<br/><strong>Area:</strong> Alabaster Icelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 72<br/><strong>Area:</strong> Alabaster Icelands - Avalanche Slopes</div>
 <div class="alpha-meta"><strong>Type:</strong> Ice / Ghost</div>
 <p>An Alpha Froslass has glowing red eyes in the game, is bigger than normal, and appears at about level 72.</p>
 </div>
 <div class="book-card">
+<h3>Hisuian Zoroark</h3>
+<img alt="Hisuian Zoroark" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/571.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10239.png" style="width:140px; height:140px; object-fit: contain;"/>
+<div class="alpha-meta"><strong>Level:</strong> 64<br/><strong>Area:</strong> Alabaster Icelands - Bonechill Wastes</div>
+<div class="alpha-meta"><strong>Type:</strong> Normal / Ghost</div>
+<p>An Alpha Hisuian Zoroark has glowing red eyes in the game, is bigger than normal, and appears at about level 64.</p>
+</div>
+<div class="book-card">
 <h3>Gallade</h3>
 <img alt="Gallade" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/475.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/475.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 70<br/><strong>Area:</strong> Alabaster Icelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 70<br/><strong>Area:</strong> Alabaster Icelands - Snowpoint Temple</div>
 <div class="alpha-meta"><strong>Type:</strong> Psychic / Fighting</div>
 <p>An Alpha Gallade has glowing red eyes in the game, is bigger than normal, and appears at about level 70.</p>
 </div>
 <div class="book-card">
 <h3>Machamp</h3>
 <img alt="Machamp" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/68.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/68.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 70<br/><strong>Area:</strong> Alabaster Icelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 70<br/><strong>Area:</strong> Alabaster Icelands - Arena's Approach</div>
 <div class="alpha-meta"><strong>Type:</strong> Fighting</div>
 <p>An Alpha Machamp has glowing red eyes in the game, is bigger than normal, and appears at about level 70.</p>
 </div>
 <div class="book-card caught-alpha">
 <h3>Lucario</h3>
 <img alt="Lucario" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/448.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 70<br/><strong>Area:</strong> Alabaster Icelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 70<br/><strong>Area:</strong> Alabaster Icelands - Icebound Falls</div>
 <div class="alpha-meta"><strong>Type:</strong> Fighting / Steel</div>
 <p>An Alpha Lucario has glowing red eyes in the game, is bigger than normal, and appears at about level 70.</p>
 </div>
 <div class="book-card caught-alpha">
 <h3>Garchomp</h3>
 <img alt="Garchomp" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/445.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/445.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 85<br/><strong>Area:</strong> Alabaster Icelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 85<br/><strong>Area:</strong> Alabaster Icelands - Avalanche Slopes</div>
 <div class="alpha-meta"><strong>Type:</strong> Dragon / Ground</div>
 <p>An Alpha Garchomp has glowing red eyes in the game, is bigger than normal, and appears at about level 85.</p>
 </div>
@@ -1622,21 +2016,21 @@
 <div class="book-card">
 <h3>Gardevoir</h3>
 <img alt="Gardevoir" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/282.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/282.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 70<br/><strong>Area:</strong> Alabaster Icelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 70<br/><strong>Area:</strong> Alabaster Icelands - Heart's Crag</div>
 <div class="alpha-meta"><strong>Type:</strong> Psychic / Fairy</div>
 <p>An Alpha Gardevoir has glowing red eyes in the game, is bigger than normal, and appears at about level 70.</p>
 </div>
 <div class="book-card">
 <h3>Piloswine</h3>
 <img alt="Piloswine" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/221.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/221.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 65<br/><strong>Area:</strong> Alabaster Icelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 65<br/><strong>Area:</strong> Alabaster Icelands - Arena's Approach</div>
 <div class="alpha-meta"><strong>Type:</strong> Ice / Ground</div>
 <p>An Alpha Piloswine has glowing red eyes in the game, is bigger than normal, and appears at about level 65.</p>
 </div>
 <div class="book-card">
 <h3>Mamoswine</h3>
 <img alt="Mamoswine" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/473.png';" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/473.png" style="width:140px; height:140px; object-fit: contain;"/>
-<div class="alpha-meta"><strong>Level:</strong> 68<br/><strong>Area:</strong> Alabaster Icelands</div>
+<div class="alpha-meta"><strong>Level:</strong> 68<br/><strong>Area:</strong> Alabaster Icelands - Avalugg's Legacy</div>
 <div class="alpha-meta"><strong>Type:</strong> Ice / Ground</div>
 <p>An Alpha Mamoswine has glowing red eyes in the game, is bigger than normal, and appears at about level 68.</p>
 </div>
@@ -1765,6 +2159,32 @@
 </div>
 <div class="book-grid">
 <div class="book-card">
+<h3>Prophecy: The Dragonets</h3>
+<ul class="book-list">
+<li>Five dragonets are chosen to end the SandWing war.</li>
+<li>Clay, Tsunami, Glory, Starflight, and Sunny are raised in secret.</li>
+<li>The prophecy pushes them toward destiny, but they learn to choose their own path.</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Prophecy: Jade Mountain</h3>
+<ul class="book-list">
+<li>A new school brings young dragons from different tribes together.</li>
+<li>Moonwatcher hears thoughts and sees flashes of dangerous futures.</li>
+<li>The prophecy warns that trust, friendship, and courage matter more than fear.</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Prophecy: The Lost Continent</h3>
+<ul class="book-list">
+<li>Dragons discover Pantala and a hidden history across the sea.</li>
+<li>Blue, Cricket, Sundew, Snowfall, and Luna face a threat that controls minds.</li>
+<li>The prophecy points toward freedom for HiveWings, SilkWings, LeafWings, and Pyrrhia.</li>
+</ul>
+</div>
+</div>
+<div class="book-grid">
+<div class="book-card">
 <h3>Arc 1: The Dragonet Prophecy</h3>
 <ul class="book-list">
 <li>The Dragonet Prophecy</li>
@@ -1881,12 +2301,110 @@
 <h1 style="text-align: center; color: #228B22; margin-bottom: 20px;">Warriors Series</h1>
 <div class="fun-facts">
 <h3>Warrior Cat Fun Facts!</h3>
-<div class="fact">There are 4 main clans: ThunderClan, RiverClan, WindClan, and ShadowClan!</div>
+<div class="fact">There are 5 main clans: ThunderClan, RiverClan, WindClan, ShadowClan, and SkyClan!</div>
 <div class="fact">StarClan is where warrior ancestors watch over the living cats!</div>
 <div class="fact">Medicine cats use herbs to heal and can speak with StarClan!</div>
 <div class="fact">Warriors have a code of honor they must follow!</div>
 <div class="fact">There are 8 amazing series with over 80 books to explore!</div>
 <div class="fact">New series are still being written - the adventure continues!</div>
+</div>
+<div class="book-grid">
+<div class="book-card">
+<h3>Prophecy: Fire Alone</h3>
+<ul class="book-list">
+<li>StarClan hints that one cat with fire-colored fur can save ThunderClan.</li>
+<li>Rusty becomes Firepaw, then Fireheart, and finally Firestar.</li>
+<li>The prophecy is about bravery, loyalty, and choosing Clan over comfort.</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Prophecy: The New Journey</h3>
+<ul class="book-list">
+<li>Chosen cats from each Clan are sent on a dangerous quest.</li>
+<li>They learn the forest is no longer safe and the Clans must find a new home.</li>
+<li>The prophecy teaches that old enemies sometimes have to travel together.</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Prophecy: Midnight</h3>
+<ul class="book-list">
+<li>StarClan sends Brambleclaw, Squirrelpaw, Crowpaw, Feathertail, Stormfur, and Tawnypelt far from the forest.</li>
+<li>The journey leads them to the sun-drown-place and a warning about Twolegs.</li>
+<li>This prophecy begins the Clans' move toward the lake territories.</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Prophecy: Silver Cat</h3>
+<ul class="book-list">
+<li>A silver cat is foretold to save the mountain Tribe from Sharptooth.</li>
+<li>Feathertail becomes the cat who fulfills it.</li>
+<li>The prophecy shows that courage can come with sacrifice.</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Prophecy: Power of Three</h3>
+<ul class="book-list">
+<li>Three kin of Firestar's kin are said to hold unusual power.</li>
+<li>Jayfeather, Lionblaze, and Dovewing discover gifts that shape the Clans' future.</li>
+<li>The prophecy grows into a battle between the living Clans and the Dark Forest.</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Prophecy: The Fourth Cat</h3>
+<ul class="book-list">
+<li>The Three are not complete until another cat joins them.</li>
+<li>Dovewing's power becomes important to the Clans' survival.</li>
+<li>This prophecy connects Power of Three with Omen of the Stars.</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Prophecy: The Dark Forest</h3>
+<ul class="book-list">
+<li>Dead warriors train living cats for a battle against StarClan.</li>
+<li>The Clans must decide who they trust when old enemies return.</li>
+<li>The prophecy builds toward the Great Battle in The Last Hope.</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Prophecy: The Blazing Star</h3>
+<ul class="book-list">
+<li>In the ancient past, the first Clan cats follow signs toward a new future.</li>
+<li>A blazing star becomes a sign of change, healing, and the birth of the Clans.</li>
+<li>This prophecy belongs to Dawn of the Clans.</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Prophecy: Shadows and Stars</h3>
+<ul class="book-list">
+<li>Later messages warn of broken laws, silent ancestors, and dangerous impostors.</li>
+<li>Alderheart, Twigbranch, Violetshine, Shadowsight, Rootspring, and Bristlefrost face hard choices.</li>
+<li>These prophecies ask what makes a true warrior when StarClan feels far away.</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Prophecy: Embrace What You Find</h3>
+<ul class="book-list">
+<li>Alderheart receives a message that sends him beyond ThunderClan's borders.</li>
+<li>The quest leads to SkyClan and changes the shape of the lake Clans.</li>
+<li>This prophecy begins A Vision of Shadows.</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Prophecy: The Broken Code</h3>
+<ul class="book-list">
+<li>The warrior code, StarClan, and the living Clans all come under pressure.</li>
+<li>Shadowsight receives strange visions while an impostor threatens ThunderClan.</li>
+<li>The prophecy asks whether the Clans can fix what has been broken.</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Prophecy: A Starless Clan</h3>
+<ul class="book-list">
+<li>RiverClan loses its leader and struggles without clear guidance.</li>
+<li>Frostpaw's messages become part of a mystery about truth and trust.</li>
+<li>The prophecy follows the Clans as they question old rules and new leaders.</li>
+</ul>
+</div>
 </div>
 <div class="book-grid">
 <div class="book-card">
@@ -1980,8 +2498,11 @@
 <div class="book-card">
 <h3>Series 9: Changing Skies</h3>
 <ul class="book-list">
-<li class="coming-soon">Coming Soon!</li>
-<li class="coming-soon">New adventures await...</li>
+<li>Elder's Quest</li>
+<li>Hidden Moon</li>
+<li>Chasing Shadows</li>
+<li>Guiding Light</li>
+<li>False Dawn</li>
 </ul>
 </div>
 </div>
@@ -2118,6 +2639,151 @@
 <img alt="Sunbeam" src="sunbeam.JPG"/>
 <p>A thoughtful ShadowClan warrior learning what loyalty means to her.</p>
 </div>
+<div class="warrior-character-card">
+<h4>Moonpaw</h4>
+<img alt="Moonpaw" src="C:/Users/Dahuituza/mengmeng/kids-books-explorer/moonpaw.jpg"/>
+<p>A quiet apprentice with steady paws and a curiosity that uncovers hidden paths.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="content-area" id="harrypotter">
+<button class="back-button" onclick="showHome()">← Back to Home</button>
+<h1 style="text-align: center; color: #740001; margin-bottom: 20px;">Harry Potter Series</h1>
+<div class="hp-hero">
+<h2>Welcome to Hogwarts</h2>
+<p>Explore the books, houses, characters, spells, and magical objects from the wizarding world.</p>
+</div>
+<div class="fun-facts">
+<h3>Harry Potter Fun Facts!</h3>
+<div class="fact">Hogwarts students are sorted into four houses: Gryffindor, Slytherin, Ravenclaw, and Hufflepuff.</div>
+<div class="fact">The story follows Harry from his first year at Hogwarts through the final battle against Voldemort.</div>
+<div class="fact">Quidditch is a wizard sport played on broomsticks with four balls and seven players on each team.</div>
+<div class="fact">The Marauder's Map shows secret passages and moving people inside Hogwarts.</div>
+</div>
+<div class="book-grid">
+<div class="book-card">
+<h3>The 7 Books</h3>
+<ul class="book-list">
+<li>Philosopher's Stone / Sorcerer's Stone</li>
+<li>Chamber of Secrets</li>
+<li>Prisoner of Azkaban</li>
+<li>Goblet of Fire</li>
+<li>Order of the Phoenix</li>
+<li>Half-Blood Prince</li>
+<li>Deathly Hallows</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Main Friends</h3>
+<ul class="book-list">
+<li>Harry Potter</li>
+<li>Hermione Granger</li>
+<li>Ron Weasley</li>
+<li>Ginny Weasley</li>
+<li>Neville Longbottom</li>
+<li>Luna Lovegood</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Teachers &amp; Mentors</h3>
+<ul class="book-list">
+<li>Albus Dumbledore</li>
+<li>Minerva McGonagall</li>
+<li>Severus Snape</li>
+<li>Rubeus Hagrid</li>
+<li>Remus Lupin</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Dark Forces</h3>
+<ul class="book-list">
+<li>Lord Voldemort</li>
+<li>Bellatrix Lestrange</li>
+<li>Draco Malfoy</li>
+<li>Dementors</li>
+<li>Death Eaters</li>
+</ul>
+</div>
+</div>
+<div class="character-section">
+<h3 style="color: #740001; text-align: center; margin-bottom: 20px;">House Treasures</h3>
+<div class="hp-house-grid">
+<div class="hp-house-card gryffindor">
+<svg aria-label="Sword of Gryffindor" role="img" viewBox="0 0 120 120">
+<path class="icon-line" d="M72 15 36 63"/>
+<path class="icon-line" d="M25 74 47 52"/>
+<path class="icon-line" d="M18 83 30 95"/>
+<path class="icon-line" d="M82 25 94 13"/>
+<path class="icon-line" d="M63 26 92 55"/>
+<path class="icon-fill" d="M34 74 46 86 29 101 19 91z"/>
+</svg>
+<h4>Gryffindor Sword</h4>
+<p>A shining sword for courage and daring.</p>
+</div>
+<div class="hp-house-card slytherin">
+<svg aria-label="Slytherin locket" role="img" viewBox="0 0 120 120">
+<path class="icon-line" d="M39 45a21 21 0 0 1 42 0"/>
+<path class="icon-fill" d="M35 46h50v49H35z"/>
+<path class="icon-line" d="M50 62c10-8 20-8 30 0"/>
+<path class="icon-line" d="M50 77c10 8 20 8 30 0"/>
+</svg>
+<h4>Slytherin Locket</h4>
+<p>A mysterious locket linked to ambition.</p>
+</div>
+<div class="hp-house-card ravenclaw">
+<svg aria-label="Ravenclaw diadem crown" role="img" viewBox="0 0 120 120">
+<path class="icon-fill" d="M18 82 30 35l20 30 12-38 18 38 20-30 12 47z"/>
+<path class="icon-line" d="M24 90h72"/>
+<path class="icon-line" d="M60 30v52"/>
+<path class="icon-line" d="M42 64h36"/>
+</svg>
+<h4>Ravenclaw Diadem</h4>
+<p>A crown for wisdom, learning, and curiosity.</p>
+</div>
+<div class="hp-house-card hufflepuff">
+<svg aria-label="Hufflepuff cup" role="img" viewBox="0 0 120 120">
+<path class="icon-fill" d="M36 31h48v31a24 24 0 0 1-48 0z"/>
+<path class="icon-line" d="M84 39h13c0 18-7 28-21 30"/>
+<path class="icon-line" d="M36 39H23c0 18 7 28 21 30"/>
+<path class="icon-line" d="M60 86v15"/>
+<path class="icon-line" d="M43 101h34"/>
+</svg>
+<h4>Hufflepuff Cup</h4>
+<p>A golden cup for loyalty and hard work.</p>
+</div>
+</div>
+</div>
+<div class="book-grid">
+<div class="book-card">
+<h3>Famous Spells</h3>
+<ul class="book-list">
+<li>Expelliarmus - disarming charm</li>
+<li>Lumos - wand light</li>
+<li>Expecto Patronum - Patronus charm</li>
+<li>Wingardium Leviosa - levitation charm</li>
+<li>Alohomora - unlocking charm</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Magical Objects</h3>
+<ul class="book-list">
+<li>Invisibility Cloak</li>
+<li>Marauder's Map</li>
+<li>Elder Wand</li>
+<li>Sorting Hat</li>
+<li>Time-Turner</li>
+</ul>
+</div>
+<div class="book-card">
+<h3>Creatures</h3>
+<ul class="book-list">
+<li>Hippogriff</li>
+<li>Phoenix</li>
+<li>Basilisk</li>
+<li>House-elf</li>
+<li>Thestral</li>
+</ul>
 </div>
 </div>
 </div>
@@ -2306,6 +2972,7 @@
             document.getElementById('arceus').style.display = 'none';
             document.getElementById('drstone').style.display = 'none';
             document.getElementById('godzilla').style.display = 'none';
+            document.getElementById('harrypotter').style.display = 'none';
             document.getElementById('demonslayer').style.display = 'none';
         }
 
